@@ -1,0 +1,188 @@
+
+/* Laptop */
+@media (max-width: 1366px) {
+    html {
+        font-size: 75%;
+    }
+}
+/* Mobile */
+@media (max-width: 600px) {
+  .hero {
+    padding: 3rem 5%;
+  }
+
+  .text h1 {
+    font-size: 1.8rem;
+  }
+
+  .text p {
+    font-size: 0.9rem;
+  }
+
+  .image-wrapper {
+    width: 60%; /* biar gak terlalu besar di HP */
+    height: 60%;
+  }
+
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+
+
+  .header-customer {
+    flex-direction: column; /* ubah jadi vertikal */
+    align-items: flex-start;
+    padding: 0 40px;
+    gap: 2rem;
+  }
+
+  .motto h2 {
+    font-size: 28px;
+  }
+
+  .motto-content {
+    max-width: 100%;
+    font-size: 15px;
+  }
+
+  .btn-motto {
+    align-self: flex-start;
+  }
+}
+/* Responsif */
+@media (max-width: 640px) {
+  .footer {
+    padding: 50px 15px 25px;
+  }
+  .footer-container {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .scroll-btn {
+    display: none; /* tombol disembunyikan di HP */
+  }
+
+  .customer-list {
+    flex-wrap: wrap; /* kembali ke mode grid */
+    justify-content: center;
+      
+    .scroll-btn {
+    display: none;
+  }
+  }
+
+    .customer-slider {
+    display: none; /* sembunyikan slider */
+  }
+
+  .customer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+padding: 40px 45px;
+        justify-items: center;
+        margin: 10px 0 40px;
+  }
+
+  .customer-grid img {
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.9;
+    transition: 0.3s;
+  }
+
+  .customer-grid img:hover {
+    filter: grayscale(0);
+    opacity: 1;
+  }
+
+
+.intro2-cng {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  padding: 100px 8%;
+  color: #fff;
+}
+
+
+
+/* Right side */
+.intro2-right {
+  max-width: 550px;
+}
+
+.intro2-right h4 {
+  color: #7AC943;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.intro2-right h2 {
+  font-size: 2.2rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.intro2-right p {
+  color: #E2F3FF;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+/* Button */
+.btn-learn {
+  display: inline-block;
+  background: #7AC943;
+  color: #0B132B;
+  padding: 12px 25px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.btn-learn:hover {
+  background: #6AB73A;
+  transform: translateY(-2px);
+}
+
+/* Thumbnails */
+.intro2-thumbs {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.intro2-thumbs img {
+  width: 200px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+}
+/* Responsive */
+@media (max-width: 900px) {
+  .intro2-cng {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .intro2-left img {
+    max-width: 100%;
+  }
+
+  .intro2-thumbs {
+    justify-content: center;
+  }
+}

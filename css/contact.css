@@ -1,0 +1,225 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+}
+/* My Content */
+.hero {
+  position: relative;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* background image di belakang */
+.background-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url(/img/backround-utama.png);
+  background-size: cover;
+  background-position: center;
+
+}
+
+.background-image img {
+  display: none; /* sembunyikan img karena kita pakai background-image */
+}
+
+
+.background-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* overlay tambahan di atas background */
+.overlay {
+  position: absolute;
+  inset: 0;
+ 
+  backdrop-filter: blur(2px); /* opsional: efek blur */
+background-color: rgb(11, 114, 133,0.9);
+}
+
+/* hero content di atas overlay */
+
+.hero-content {
+position: relative;
+z-index: 2;
+text-align: center;
+color: #fff;
+  animation: fadeUp 1s ease-out forwards;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.hero-content img {
+width: 160px;
+margin-bottom: 20px;
+filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+animation: float 3s ease-in-out infinite;
+height: 400px;
+}
+
+
+.hero-content h1 {
+font-size: 2.5rem;
+font-weight: 600;
+margin-top: 40px;
+}
+
+
+.hero-content p {
+font-size: 12px;
+margin-top: 40px;
+max-width: 700px;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 12px 30px;
+  border: 2px solid white;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: white;
+  color: #111;
+  transform: scale(1.02);
+}
+
+/* Animasi muncul */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Hero End */
+/* ---------------------------
+   SECTION 1 - Title
+--------------------------- */
+.contact-hero {
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+
+.contact-hero h2 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.contact-hero p {
+  color: #555;
+  margin-top: 8px;
+}
+
+/* ---------------------------
+   SECTION 2 - 3 Icon Cards
+--------------------------- */
+.contact-icons {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 40px;
+}
+
+.icon-card {
+  background: #fff;
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
+
+.icon-card i {
+  font-size: 40px;
+  color: #ff7a00;
+  margin-bottom: 15px;
+}
+.icon-card p {
+  color: #666;
+  margin-top: 20px;
+}
+.icon-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+}
+
+/* ---------------------------
+   SECTION 3 - Map
+--------------------------- */
+.contact-map {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.map-holder {
+  width: 100%;
+
+}
+
+.map-holder iframe {
+  width: 100%;
+  height: 380px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+.map-holder iframe {
+  width: 100%;
+  max-width: 1200x;
+  height: 580px;
+}
+/* ---------------------------
+   SECTION 4 - CTA
+--------------------------- */
+.contact-cta {
+  margin: 10px auto 100px;
+  max-width: 1100px;
+  text-align: center;
+  background-color: rgb(11, 114, 133);
+  padding: 60px 30px;
+  
+  border-radius: 20px;
+  color: #fff;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.22);
+}
+
+.contact-cta h2 {
+  font-size: 28px;
+  margin-bottom: 25px;
+}
+
+.contact-cta button {
+  background: #ff7a00;
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-cta button:hover {
+  background: #ff9d37;
+  transform: translateY(-3px);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .contact-icons {
+    grid-template-columns: 1fr;
+  }
+}

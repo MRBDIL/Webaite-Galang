@@ -1,0 +1,660 @@
+/* Hero Section */
+/* === HERO SECTION === */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 85vh; /* dikurangi sedikit biar gak ketimpa card di bawah */
+  background: url('/img/backround-utama.png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  margin-bottom: 80px; /* jarak aman sebelum card-service */
+}
+
+/* Overlay hitam transparan */
+.hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+.navbar-toggle  {
+  color: white;
+}
+/* Teks di tengah */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 0 20px;
+  animation: fadeUp 1s ease-out forwards;
+  opacity: 0;
+  transform: translateY(40px);
+}
+.hero-content img {
+width: 160px;
+margin-bottom: 20px;
+filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+animation: float 3s ease-in-out infinite;
+}
+.hero-content h1 {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.hero-content p {
+  font-size: 1rem;
+  color: #ddd;
+  margin-bottom: 2rem;
+}
+
+/* Tombol CTA */
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  border: 2px solid white;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: white;
+  color: #111;
+  transform: scale(1.02);
+}
+
+/* Animasi muncul */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh; /* biar proporsional di mobile */
+    margin-bottom: 60px;
+  }
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+}
+
+
+
+/* === Struktur utama (sama seperti sebelumnya) === */
+.card-service {
+ position: relative; /* bukan absolute */
+  margin: -120px auto 0; /* tengah secara horizontal, naik sedikit */
+  width: 85%;
+  width: 85%;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  padding: 60px 40px;
+  text-align: center;
+  z-index: 2;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  
+  text-align: center;
+}
+
+.card-service h2 {
+  color: var(--text-dark);
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.services-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* === Perbaikan posisi tombol Learn More === */
+.service-box {
+  background-color: #ffffff;
+  color: var(--text-dark);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  width: 300px;
+  padding: 30px 25px;
+  display: flex;                 /* supaya bisa atur posisi antar elemen */
+  flex-direction: column;        /* susun vertikal */
+  justify-content: space-between;/* tombol di bawah */
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 320px;             /* biar semua box sama tinggi */
+}
+
+.service-box img {
+  width: 50px;
+  margin-bottom: 15px;
+}
+
+.service-box h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.service-box p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  flex-grow: 1; /* biar teks fleksibel tapi tombol tetap di bawah */
+}
+
+/* Tombol Learn More */
+.learn-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  padding: 12px 28px;
+  background-color: transparent;
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.learn-more:hover {
+  background-color: #0056d2;
+  color: white;
+  border-color: #0056d2;
+  transform: translateY(-2px);
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+.learn-more:hover .btn-icon {
+  transform: translateX(5px);
+}
+
+
+.service-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(31,90,169,0.3);
+}
+
+
+.service-box:hover .learn-more::after {
+  transform: translateX(5px);
+}
+.btn-learn {
+  background: none;
+  border: 2px solid #0a5ef5;
+  border-radius: 50px;
+  padding: 10px 25px;
+  color: #0a5ef5;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-learn:hover {
+  background: #0a5ef5;
+  color: #fff;
+}
+
+/* My content End */
+/* === SECTION WRAPPER === */
+.our-services-section {
+  width: 100%;
+  padding: 80px 6%;
+
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 60px;
+  color: #0f2e4d;
+}
+
+/* === ROW STYLE === */
+.service-row {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 80px;
+}
+
+.service-row.reverse {
+  flex-direction: row-reverse;
+}
+
+/* === IMAGES === */
+.service-img {
+  width: 58%;
+  height: 300px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0px 8px 25px rgba(0,0,0,0.15);
+}
+
+/* === TEXT BOX === */
+.service-text {
+  width: 48%;
+}
+
+.service-text h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #0a3d62;
+}
+
+.service-text p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* === BUTTON === */
+.service-btn {
+  background: #0a5ef5;
+  color: #fff;
+  border: none;
+  padding: 12px 22px;
+  font-size: 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.service-btn:hover {
+  background: #083bb3;
+  transform: translateY(-2px);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .service-row,
+  .service-row.reverse {
+    flex-direction: column;
+  }
+
+  .service-img,
+  .service-text {
+    width: 100%;
+  }
+}
+
+.page-section {
+  padding: 6rem 0;
+}
+.page-section h2.section-heading, .page-section .section-heading.h2 {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+.page-section h3.section-subheading, .page-section .section-subheading.h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  margin-bottom: 4rem;
+}
+.timeline {
+  position: relative;
+  padding: 0;
+  list-style: none;
+}
+.timeline:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 40px;
+  width: 4px;
+  margin-left: -1.5px;
+
+  content: "";
+  background-color: #e9ecef;
+}
+
+.timeline > li {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 70px;
+}
+.timeline > li:after, .timeline > li:before {
+  display: table;
+  content: " ";
+}
+.timeline > li:after {
+  clear: both;
+}
+.timeline > li .timeline-panel {
+  position: relative;
+  float: right;
+  width: 100%;
+  padding: 0 20px 0 100px;
+  text-align: left;
+}
+.timeline > li .timeline-panel:before {
+  right: auto;
+  left: -15px;
+  border-right-width: 15px;
+  border-left-width: 0;
+}
+.timeline > li .timeline-panel:after {
+  right: auto;
+  left: -14px;
+  border-right-width: 14px;
+  border-left-width: 0;
+}
+.timeline > li .timeline-image {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  margin-left: 0;
+  text-align: center;
+  color: white;
+  border: 7px solid #e9ecef;
+  border-radius: 100%;
+  background-color: #ffc800;
+}
+.timeline > li .timeline-image h4, .timeline > li .timeline-image .h4 {
+  font-size: 10px;
+  line-height: 14px;
+  margin-top: 12px;
+}
+.timeline > li.timeline-inverted > .timeline-panel {
+  float: right;
+  padding: 0 20px 0 100px;
+  text-align: left;
+}
+.timeline > li.timeline-inverted > .timeline-panel:before {
+  right: auto;
+  left: -15px;
+  border-right-width: 15px;
+  border-left-width: 0;
+}
+.timeline > li.timeline-inverted > .timeline-panel:after {
+  right: auto;
+  left: -14px;
+  border-right-width: 14px;
+  border-left-width: 0;
+}
+.timeline > li:last-child {
+  margin-bottom: 0;
+}
+.timeline .timeline-heading h4, .timeline .timeline-heading .h4 {
+  margin-top: 0;
+  color: inherit;
+}
+.timeline .timeline-heading h4.subheading, .timeline .timeline-heading .subheading.h4 {
+  text-transform: none;
+  margin-top: 16px;
+  font-size: 16px;
+}
+.timeline .timeline-body > ul,
+.timeline .timeline-body > p {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .timeline:before {
+    left: 50%;
+  }
+  .timeline > li {
+    min-height: 100px;
+    margin-bottom: 100px;
+  }
+  .timeline > li .timeline-panel {
+    float: left;
+    width: 41%;
+    padding: 0 20px 20px 30px;
+    text-align: right;
+  }
+  .timeline > li .timeline-image {
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    margin-left: -50px;
+  }
+  .timeline > li .timeline-image h4, .timeline > li .timeline-image .h4 {
+    font-size: 13px;
+    line-height: 18px;
+    margin-top: 16px;
+  }
+  .timeline > li.timeline-inverted > .timeline-panel {
+    float: right;
+    padding: 0 30px 20px 20px;
+    text-align: left;
+  }
+}
+@media (min-width: 992px) {
+  .timeline > li {
+    min-height: 150px;
+  }
+  .timeline > li .timeline-panel {
+    padding: 0 20px 20px;
+  }
+  .timeline > li .timeline-image {
+    width: 150px;
+    height: 150px;
+    margin-left: -75px;
+  }
+  .timeline > li .timeline-image h4, .timeline > li .timeline-image .h4 {
+    font-size: 18px;
+    line-height: 26px;
+    margin-top: 30px;
+  }
+  .timeline > li.timeline-inverted > .timeline-panel {
+    padding: 0 20px 20px;
+  }
+}
+@media (min-width: 1200px) {
+  .timeline > li {
+    min-height: 170px;
+  }
+  .timeline > li .timeline-panel {
+    padding: 0 20px 20px 100px;
+  }
+  .timeline > li .timeline-image {
+    width: 170px;
+    height: 170px;
+    margin-left: -85px;
+  }
+  .timeline > li .timeline-image h4, .timeline > li .timeline-image .h4 {
+    margin-top: 40px;
+  }
+  .timeline > li.timeline-inverted > .timeline-panel {
+    padding: 0 100px 20px 20px;
+  }
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+.rounded-circle {
+  border-radius: 50% !important;
+}
+.section-heading, .section-heading.h2 {
+  font-size: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+.section-subheading {
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  margin-bottom: 4rem;
+}
+.text-muted {
+  --bs-text-opacity: 1;
+  color: #6c757d !important;
+}
+.text-center {
+  text-align: center;
+  margin-top: 70px;
+}
+
+
+.timeline-image .inside-text {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  padding: 0 8px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6); /* biar terbaca */
+  z-index: 2;
+}
+/* Overlay hitam transparan */
+.timeline-image .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35); /* gelap transparan */
+  border-radius: 50%;
+  z-index: 1;
+}
+
+
+/* SERVICE II */
+
+.workflow {
+  padding: 70px 0;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.wf-title {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 100px;
+}
+
+.wf-sub {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 50px;
+}
+
+.wf-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 35px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.wf-item {
+  width: 300px;
+  padding: 0 0 25px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: .3s ease;
+  overflow: hidden;
+}
+
+.wf-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* GAMBAR */
+.wf-item {
+  position: relative;   /* penting untuk posisi wf-number */
+  width: 350px;
+  padding: 0 0 25px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: .3s ease;
+  overflow: visible;
+}
+
+/* NOMOR POSISI KIRI ATAS */
+.wf-number {
+ position: absolute;
+    top: -18px;
+    left: -18px;
+    width: 60px;
+    height: 59px;
+    background: #48d017;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* GAMBAR */
+.wf-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 120px;
+
+}
+
+.wf-item h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  margin-top:20px ;
+}
+
+.wf-item p {
+  font-size: 14px;
+  color: #555;
+  padding: 0 20px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .wf-item {
+    width: 100%;
+    max-width: 360px;
+  }
+}

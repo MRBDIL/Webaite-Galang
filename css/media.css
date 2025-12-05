@@ -1,0 +1,270 @@
+:root{
+      --color-green: #7AC943;
+  --color-blue: #00AEEF;
+  --text-dark: #0B132B;
+  --text-light: #F4F9FF;
+  --color-accent: #F9D65C;
+}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #fff;
+      color: #111;
+      overflow-x: hidden;
+    }
+
+.hero-news {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.beritas {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.berita {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.berita.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.text-box {
+  position: absolute;
+  bottom: 80px;
+  left: 80px;
+  max-width: 600px;
+  z-index: 2;
+}
+
+.text-box .tag {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+}
+
+.text-box h1 {
+  font-size: 2rem;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+}
+
+.text-box .date {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: #ddd;
+}
+
+.btn {
+  background: #fff;
+  color: #000;
+  padding: 10px 18px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+
+.news-controls {
+  position: absolute;
+  bottom: 40px;
+  right: 50px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+}
+
+/* Tombol dasar */
+.news-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.7);
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+/* Ikon panah */
+.news-btn svg {
+  width: 22px;
+  height: 22px;
+
+}
+
+/* Efek hover */
+.news-btn:hover {
+  background: white;
+  color: black;
+  transform: scale(1.1);
+  border-color: white;
+}
+
+/* Tombol kiri dan kanan */
+.news-btn.prev {
+  backdrop-filter: blur(4px);
+}
+
+.news-btn.next {
+  backdrop-filter: blur(4px);
+}
+
+.btn-berita {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  padding: 12px 28px;
+  background-color: transparent;
+  color: var(--text-light);
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-berita:hover {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  transform: translateY(-2px);
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+  background-color: #000;
+  color: #000;
+}
+
+.btn-berita:hover .btn-icon {
+  transform: translateX(5px);
+  color: #000;
+}
+    /* === BERITA SECTION === */
+    .berita-list {
+      text-align: center;
+      padding: 40px 10%;
+    }
+
+    .berita-list h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .filter {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+.filter-tabs {
+  display: inline-flex;
+  background: #e6eefc;
+  padding: 5px;
+  border-radius: 40px;
+  margin-bottom: 30px;
+  gap: 5px;
+}
+
+.filter-tab {
+  padding: 10px 25px;
+  border-radius: 30px;
+  background: transparent;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  color: #0a3fa8;
+  transition: 0.3s ease;
+}
+
+.filter-tab.active {
+  background: #0056d2;
+  color: white;
+  box-shadow: 0 3px 10px rgba(0, 86, 210, 0.35);
+}
+
+
+    .berita-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      transition: 0.3s ease;
+    }
+
+    .berita-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: left;
+      transition: all 0.4s ease;
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .berita-card.fade {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+
+    .berita-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .berita-card h3 {
+      padding: 1rem;
+      font-size: 1.1rem;
+      color: #111;
+      font-weight: 600;
+    }
+
+    .berita-card p.tanggal {
+      padding: 0 1rem 1rem;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 2.2rem; }
+      .hero-content p { font-size: 1rem; }
+    }

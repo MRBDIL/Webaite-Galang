@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Admin Panel - Berita</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f4; }
+.container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+h1 { text-align: center; color: #0056d2; }
+form { margin-bottom: 20px; }
+label { display: block; margin: 10px 0 5px; }
+input, textarea, button { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; }
+button { background: #0056d2; color: white; cursor: pointer; }
+button:hover { background: #003d99; }
+.berita-list { list-style: none; padding: 0; }
+.berita-item { border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; }
+.berita-item img { width: 100px; height: 60px; object-fit: cover; margin-right: 10px; }
+.content { display: flex; align-items: center; }
+.actions button { margin-left: 5px; width: auto; }
+#imagePreview { max-width: 200px; margin-top: 10px; display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Admin Panel - Kelola Berita</h1>
+
+<!-- Form untuk Tambah/Edit Berita -->
+<form id="beritaForm">
+    <input type="hidden" id="editId">
+    <label for="judul">Judul Berita:</label>
+    <input type="text" id="judul" required>
+
+    <label for="tanggal">Tanggal (YYYY-MM-DD):</label>
+    <input type="date" id="tanggal" required>
+
+    <label for="gambar">Upload Gambar:</label>
+    <input type="file" id="gambar" accept="image/*" required>
+    <img id="imagePreview" src="" alt="Preview Gambar">
+
+    <button type="submit" id="saveBtn">Simpan Berita</button>
+    <button type="button" id="cancelEdit">Batal Edit</button>
+</form>
+
+<!-- Daftar Berita -->
+<h2>Daftar Berita</h2>
+<ul id="beritaList" class="berita-list"></ul>
+</div>
+
+<script>
+const form = document.getElementById('beritaForm');
+const judulInput = document.getElementById('judul');
+const tanggalInput = document.getElementById('tanggal');
+const gambarInput = document.getElementById('gambar');
+const imagePreview = document.getElementById('imagePreview');
+const beritaList = document.getElementById('beritaList');
+const cancelBtn = document.getElementById('cancelEdit');
+const editIdInput = document.getElementById('editId');
+const saveBtn = document.getElementById('saveBtn');
+
+let editingId = null; // ID berita yang sedang diedit
+
+// Load berita dari localStorage
+function loadBerita() {
+    const berita = JSON.parse(localStorage.getItem('berita')) || [];
+    beritaList.innerHTML = '';
+    berita.forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'berita-item';
+        li.innerHTML = `
+            <div class="content">
+                <img src="${item.gambar}" alt="Gambar">
+                <div>
+                    <strong>${item.judul}</strong> - ${item.tanggal}
+                </div>
+            </div>
+            <div class="actions">
+                <button onclick="editBerita('${item.id}')">Edit</button>
+                <button onclick="deleteBerita('${item.id}')">Hapus</button>
+            </div>
+        `;
+        beritaList.appendChild(li);
+    });
+}
+
+// Reset form
+function resetForm() {
+    form.reset();
+    editingId = null;
+    imagePreview.style.display = 'none';
+    gambarInput.required = true;
+    document.getElementById('saveBtn').textContent = 'Simpan Berita';
+    editIdInput.value = '';
+}
+
+// Preview gambar saat upload
+gambarInput.addEventListener('change', () => {
+    const file = gambarInput.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            imagePreview.src = reader.result;
+            imagePreview.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+// Submit form untuk simpan/edit berita
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const beritaData = JSON.parse(localStorage.getItem('berita')) || [];
+    const judul = judulInput.value;
+    const tanggal = tanggalInput.value;
+
+    if (gambarInput.files[0]) {
+        // Ada gambar baru diupload
+        const reader = new FileReader();
+        reader.onload = () => {
+            saveBerita(reader.result);
+        };
+        reader.readAsDataURL(gambarInput.files[0]);
+    } else {
+        // Tidak upload gambar baru
+        if (editingId) {
+            // Pakai gambar lama
+            const beritaExisting = beritaData.find(b => b.id === editingId);
+            if (beritaExisting) {
+                saveBerita(beritaExisting.gambar);
+            }
+        } else {
+            alert('Silakan upload gambar!');
+        }
+    }
+
+    function saveBerita(gambarData) {
+        if (editingId) {
+            // Edit
+            const index = beritaData.findIndex(b => b.id === editingId);
+            if (index !== -1) {
+                beritaData[index] = {
+                    id: editingId,
+                    judul: judul,
+                    tanggal: tanggal,
+                    gambar: gambarData
+                };
+            }
+        } else {
+            // Baru
+            beritaData.push({
+                id: Date.now().toString(),
+                judul: judul,
+                tanggal: tanggal,
+                gambar: gambarData
+            });
+        }
+        localStorage.setItem('berita', JSON.stringify(beritaData));
+        loadBerita();
+        resetForm();
+    }
+});
+
+// Edit berita
+function editBerita(id) {
+    const berita = JSON.parse(localStorage.getItem('berita')) || [];
+    const item = berita.find(b => b.id === id);
+    if (item) {
+        editingId = id;
+        judulInput.value = item.judul;
+        tanggalInput.value = item.tanggal;
+        imagePreview.src = item.gambar;
+        imagePreview.style.display = 'block';
+        // Saat edit, gambar tidak wajib diupload ulang
+        gambarInput.required = false;
+        document.getElementById('saveBtn').textContent = 'Update Berita';
+        // Simpan id ke input hidden
+        editIdInput.value = id;
+    }
+}
+
+// Hapus berita
+function deleteBerita(id) {
+    let berita = JSON.parse(localStorage.getItem('berita')) || [];
+    berita = berita.filter(b => b.id !== id);
+    localStorage.setItem('berita', JSON.stringify(berita));
+    loadBerita();
+    if (editingId === id) {
+        resetForm();
+    }
+}
+
+// Batal edit
+cancelBtn.addEventListener('click', resetForm);
+
+// Load data awal
+loadBerita();
+</script>
+</body>
+</html>
